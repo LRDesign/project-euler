@@ -1,32 +1,30 @@
-#NUMBER = 27
+#NUMBER = 1005
 #NUMBER = 13195
 NUMBER = 600851475143
 
 root = Math.sqrt(NUMBER).to_i
-primes = []
+puts root
 
-#returns true if i is not evenly divided by
-# any number in primes
-def prime?(i, primes)
-  primes.each do |n|
+def prime?(i)
+  return false if i % 2 == 0
+  root = Math.sqrt(i).to_i
+  n = 3
+  while n <= root
     return false if i % n == 0
+    n+=2
   end
   true
 end
 
-# find the primes <= root
-for i in (2..root)
-  primes << i if prime?(i, primes)
-end
 
-factor = -1
-primes.each do |p|
-  factor = p if NUMBER % p == 0
+i = root
+while (i > 1)
+  if NUMBER % i == 0
+    puts "factor: #{i}"
+    if prime?(i)
+      puts "prime factor: #{i}"
+      exit
+    end  
+  end
+  i-=1
 end
-puts factor
-
-# 
-# puts "----"
-# primes.each do |n|
-#   puts n
-# end
