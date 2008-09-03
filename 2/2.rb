@@ -1,4 +1,4 @@
-LIMIT = 10
+LIMIT = 4000000
 a = 1
 b = 1
 sum = 0
