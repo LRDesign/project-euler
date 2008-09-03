@@ -1,5 +1,13 @@
+def divisible?(x,y)
+  x%y == 0
+end
+
 total = 0
 (1...1000).to_a.each do |n|
-  total += n if (n/3).integer? or (n/5).integer?
+  if divisible?(n,3) or divisible?(n,5)
+    #puts n
+    total += n 
+  end
 end
 puts total
+
