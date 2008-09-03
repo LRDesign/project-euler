@@ -1,0 +1,5 @@
+The upper bound is 999x999 = 998001
+the lower bound is 100x100 = 10000
+
+How do I test if something is the product of two 3-digit numbers?
+largest possible factor of X is <= sqrt(X)
