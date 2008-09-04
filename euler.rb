@@ -1,12 +1,15 @@
 #!/usr/bin/ruby
 $: << File.join(File.expand_path(File.dirname(__FILE__), "lib"))
 
-require "#{ARGV[0]}/E#{ARGV[0]}"
-solution_class = Object.const_get("E#{ARGV[0]}")
-@solution = solution_class.new
+require 'tools'
+include Tools
 
-start = Time.now
-ans = @solution.answer
-elapsed = Time.now - start
-puts ("Solution: #{ans}")
-puts ("Computed in: #{elapsed} sec")
+while (arg = ARGV.shift)
+  if is_a_number?(arg)
+    solve_one(arg)
+  elsif arg == 'all'
+    puts "Solve all not implemented yet"
+  else
+    puts "Usage: euler.rb [number] [all]"
+  end
+end
