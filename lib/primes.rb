@@ -30,6 +30,10 @@ module Primes
     true
   end
   
+  def first_primes
+    @first_primes = primes_array(:count => 100)
+  end
+  
 end
 
 class PrimeClass

@@ -25,4 +25,11 @@ describe "primes module" do
     end
   end
   
+  describe "default_array" do
+    it "should contain the first 100 primes" do
+      @pt.first_primes.should have(100).members
+    end    
+  end
+  
+  
 end
