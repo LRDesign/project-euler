@@ -34,6 +34,17 @@ module Primes
   def primes_array_sieved(options = {})
     limit = options[:limit]
     field = Array.new(limit+1, true)
+    sieve(field)
+  end
+  
+  # marks false all the entries in the array field whose indices are
+  # multiples of values in the array "primes", assuming that the
+  # index is offset by offset.
+  def sieve(field, primes = [2], offset = 0)
+    primes << 2 unless primes.include?(2)
+        
+    start = [3, offset].min
+    
     # sieve the number field
     3.step(field.size / 2, 2) do |k|
       (3 * k).step(field.size, 2 * k) do |n|
@@ -42,11 +53,35 @@ module Primes
     end
     
     # collect the field into an array, starting with 3
-    primes = [ 2 ]
     3.step(field.size, 2) do |n|
       primes << n if field[n] 
     end
-    primes
+    primes    
+  end
+  
+  # marks as false all entries in field whose indices (+offset) are
+  # multiples of values in the array primes.  Ignores even numbers.
+  def sieve_existing(field, primes, offset)
+    # first, if there are any primes other than 2 in the supplied array,
+    # then remove their multiples from the field
+    if primes.size > 1
+      primes[1..primes.size].each do |p|
+        
+        #start from the prime's first odd multiple that's greater than offset
+        div = offset / p
+        if div % 2 == 0 
+          start = (p * 3)
+        else
+          start = (p * 2)    
+        end
+        puts "\n#{p} #{div} #{start}"
+        start.step(field.size, 2 * p) do |multiple|
+          puts "\t#{multiple}"
+          field[multiple-offset] = false
+        end
+      end
+    end
+    field
   end
   
   def within_limit(val, primes, options = {})
