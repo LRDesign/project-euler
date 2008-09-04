@@ -31,20 +31,32 @@ describe "primes module" do
     end    
   end
   
-  describe "prime_factors_hash" do
-    it "should return the prime factor counts of 3" do
-      @pt.prime_factors(3).should == { 3 => 1 }
+  # describe "prime_factors_hash" do
+  #   it "should return the prime factor counts of 3" do
+  #     @pt.prime_factors_hash(3).should == { 3 => 1 }
+  #   end
+  #   
+  #   it "should return the prime factor counts of 4" do
+  #     @pt.prime_factors_hash(4).should == { 2 => 2 }
+  #   end
+  #   
+  #   it "should return the prime factor counts of 12" do
+  #     @pt.prime_factors_hash(6).should == { 2 => 2, 3 => 1 }
+  #   end
+  # end
+  
+  describe "first_prime_factor" do
+    it "should pull 2 out of 12" do
+      @pt.first_prime_factor(12).should == { :factor => 2, :dividend => 6 }
     end
     
-    it "should return the prime factor counts of 4" do
-      @pt.prime_factors(4).should == { 2 => 2 }
+    it "should pull 3 out of 15" do
+      @pt.first_prime_factor(15).should == { :factor => 3, :dividend => 5 }
     end
     
-    it "should return the prime factor counts of 12" do
-      @pt.prime_factors(6).should == { 2 => 2, 3 => 1 }
-    end
-    
-    
+    it "should pull 13 out of 13" do
+      @pt.first_prime_factor(13).should == { :factor => 13, :dividend => 1 }
+    end      
   end
   
 end

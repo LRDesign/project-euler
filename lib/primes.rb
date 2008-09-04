@@ -1,12 +1,12 @@
 # tools for generating and interacting with primes
 module Primes
-  ARRAY_DEFAULT_LIMIT = 10
+  ARRAY_DEFAULT_LIMIT = 100
   
   # generates an array containing all primes below options[:limit]
   # or the first options[:count] primes 
   def primes_array(options = {})
     # default limit of 100 primes
-    options[:count]=10 unless options[:count] or options[:limit]
+    options[:count]=100 unless options[:count] or options[:limit]
     primes = initialize_array(options)
     val = 5
     while within_limit(val, primes, options)
@@ -31,11 +31,26 @@ module Primes
   end
   
   def first_primes
-    @first_primes = primes_array(:count => 100)
+    @first_primes = primes_array(:count => ARRAY_DEFAULT_LIMIT)
   end
   
-  def prime_factors
+  # a hash of the prime factors of n, with the number of occurrences of each
+  def prime_factors_hash(n)
+    var = n
+    h = Hash.new
+    
   end
+  
+  # finds the lowest prime factor of n and returns that factor
+  # and the dividend in a hash
+  def first_prime_factor(n)
+    if factor = first_primes.find { |p| n % p == 0 }
+      { :factor => factor, :dividend => n / factor }
+    else
+      { :factor => n, :dividend => 1 }
+    end
+  end
+  
 end
 
 class PrimeClass
