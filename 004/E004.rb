@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../euler_solution'
+require 'euler_solution.rb'
 
 class E004 < EulerSolution
   START_HALF = 997
@@ -38,7 +38,7 @@ class E004 < EulerSolution
     nn = START_HALF
     while three_digits?(nn)
       pp = palindrome(nn)
-      puts "pp: #{pp}"
+      #puts "pp: #{pp}"
       return pp if three_digit_factor_pair(pp)
       nn -= 1
     end
