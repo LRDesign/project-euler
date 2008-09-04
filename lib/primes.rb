@@ -22,11 +22,31 @@ module Primes
   end
 
   def initialize_array(options = {})
-    primes = Array.new
-    primes << 2
+    primes = [ 2 ]
     unless (options[:count] and options[:count] < 2) or (options[:limit] and options[:limit] < 3)
       primes << 3 
     end
+  end
+  
+  # implements the sieve of Erastosthenes and returns the resulting primes
+  # in an array.   This version doesn't bother sieving or checking the even
+  # numbers > 2
+  def primes_array_sieved(options = {})
+    limit = options[:limit]
+    field = Array.new(limit+1, true)
+    # sieve the number field
+    3.step(field.size / 2, 2) do |k|
+      (3 * k).step(field.size, 2 * k) do |n|
+        field[n] = false
+      end
+    end
+    
+    # collect the field into an array, starting with 3
+    primes = [ 2 ]
+    3.step(field.size, 2) do |n|
+      primes << n if field[n] 
+    end
+    primes
   end
   
   def within_limit(val, primes, options = {})

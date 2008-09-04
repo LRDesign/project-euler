@@ -66,6 +66,16 @@ describe "primes module" do
   
     it "should contain all prime factors of 42" do
       @pt.prime_factors(42).should == [ 2, 3, 7 ]
+    end    
+  end
+  
+  describe "primes_array_sieved" do
+    it "should produce the same results as the existng primes_array method" do
+      @pt.primes_array_sieved(:limit => 20).should == @pt.primes_array(:limit => 20)
+    end
+    
+    it "should be inclusive if limit is a prime" do
+      @pt.primes_array_sieved(:limit => 5).should == [2, 3, 5]
     end
     
   end
