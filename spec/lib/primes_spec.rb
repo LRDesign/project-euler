@@ -31,5 +31,20 @@ describe "primes module" do
     end    
   end
   
+  describe "prime_factors_hash" do
+    it "should return the prime factor counts of 3" do
+      @pt.prime_factors(3).should == { 3 => 1 }
+    end
+    
+    it "should return the prime factor counts of 4" do
+      @pt.prime_factors(4).should == { 2 => 2 }
+    end
+    
+    it "should return the prime factor counts of 12" do
+      @pt.prime_factors(6).should == { 2 => 2, 3 => 1 }
+    end
+    
+    
+  end
   
 end

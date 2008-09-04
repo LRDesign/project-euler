@@ -34,6 +34,8 @@ module Primes
     @first_primes = primes_array(:count => 100)
   end
   
+  def prime_factors
+  end
 end
 
 class PrimeClass
