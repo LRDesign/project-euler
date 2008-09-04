@@ -16,8 +16,9 @@ module Tools
   end
   
   def solve_one(arg)
-    require "#{arg}/E#{arg}"
-    solution_class = Object.const_get("E#{arg}")
+    num = sprintf('%03d',arg)
+    require "#{num}/E#{num}"
+    solution_class = Object.const_get("E#{num}")
     solution = solution_class.new 
     puts solve_puzzle(solution)
   end

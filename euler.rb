@@ -6,7 +6,7 @@ include Tools
 
 while (arg = ARGV.shift)
   if is_a_number?(arg)
-    solve_one(arg)
+    solve_one(arg.to_i)
   elsif arg == 'all'
     puts "Solve all not implemented yet"
   else
