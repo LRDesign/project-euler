@@ -12,6 +12,20 @@ describe 'E004' do
     @solution.palindrome(125).should == 125521    
   end  
   
+  describe "three_digit_factor_pair" do
+    it "should find simple composites with two 3-digit pairs" do
+      @solution.three_digit_factor_pair(18000).should == true
+    end
+    
+    it "should reject small numbers" do
+      @solution.three_digit_factor_pair(9999).should == false
+    end
+    
+    it "should reject 197*1009" do
+      @solution.three_digit_factor_pair(198773).should == false
+    end    
+  end
+  
   describe "three_digit" do
     it "should find 3-digit numbers" do
       @solution.three_digits?(100).should == true
