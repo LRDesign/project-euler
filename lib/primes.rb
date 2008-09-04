@@ -32,9 +32,19 @@ module Primes
   # in an array.   This version doesn't bother sieving or checking the even
   # numbers > 2
   def primes_array_sieved(options = {})
-    limit = options[:limit]
-    field = Array.new(limit+1, true)
-    sieve(field)
+    if options[:limit]
+      limit = options[:limit]
+      field = Array.new(limit+1, true)
+      sieve(field)
+    else
+      primes = []
+      times = 0
+      while primes.size < options[:count]
+        field = Array.new(1000, true)
+        primes = sieve(field, primes, 1000*times)
+        
+      end      
+    end
   end
   
   # marks false all the entries in the array field whose indices are
@@ -43,19 +53,31 @@ module Primes
   def sieve(field, primes = [2], offset = 0)
     primes << 2 unless primes.include?(2)
         
-    start = [3, offset].min
+    # if we have some stored primes, sieve those     
+    field = sieve_existing(field, primes, offset) if primes.size > 1    
     
+    if primes.size > 1
+      start = [3, primes.max+2].max
+    else
+      start = 3
+    end
+        
     # sieve the number field
-    3.step(field.size / 2, 2) do |k|
+    start.step( (field.size / 2)-offset, 2) do |k|
       (3 * k).step(field.size, 2 * k) do |n|
         field[n] = false
       end
     end
     
+    #start with an even index
+    start = (offset % 2 == 0) ? 1 : 0
+
     # collect the field into an array, starting with 3
-    3.step(field.size, 2) do |n|
-      primes << n if field[n] 
+    start.step(field.size, 2) do |n|
+      primes << n+offset if field[n] and (n+offset > 2)
     end
+    
+    if primes.size
     primes    
   end
   
@@ -67,16 +89,21 @@ module Primes
     if primes.size > 1
       primes[1..primes.size].each do |p|
         
-        #start from the prime's first odd multiple that's greater than offset
+        # start from the prime's first odd multiple that's greater than offset
+        # but don't include the prime itself
         div = offset / p
         if div % 2 == 0 
-          start = (p * 3)
+          if (div > 0)
+            start = (p * (1 + div) )
+          else
+            start = (p * (3 + div) )
+          end
         else
-          start = (p * 2)    
+          start = (p * (2 + div) )    
         end
-        puts "\n#{p} #{div} #{start}"
-        start.step(field.size, 2 * p) do |multiple|
-          puts "\t#{multiple}"
+        #puts "\n#{p} #{div} #{start}"
+        start.step(field.size+offset, 2 * p) do |multiple|
+          #puts "\t#{multiple}"
           field[multiple-offset] = false
         end
       end
