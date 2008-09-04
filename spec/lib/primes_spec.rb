@@ -113,6 +113,28 @@ describe "primes module" do
         true, # 14
         false] # 15
     end
+    
+    it "should mark multples of the array values false with an offset" do
+      arr = Array.new(15, true)
+      @pt.sieve_existing(arr,[2, 3, 5], 10).should == [ 
+        true, # 10 
+        true, # 11 
+        true, # 12 
+        true, # 13 
+        true, # 14 
+        false, # 15 
+        true, # 16
+        true, # 17 
+        true, # 18  - ignores evens 
+        true, # 19          
+        true, # 20 
+        false, # 21
+        true, # 22 
+        true, # 23
+        true, # 24 - ignores evens
+        false] # 25
+    end
+    
   end
   
 end
