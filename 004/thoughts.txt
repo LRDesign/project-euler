@@ -1,5 +1,23 @@
 The upper bound is 999x999 = 998001
 the lower bound is 100x100 = 10000
 
-How do I test if something is the product of two 3-digit numbers?
-largest possible factor of X is <= sqrt(X)
+is it better to generate palindromes and test their factors, or to generate 3-digit factors and test if their products are palindromes?	
+
+Assume generation of palindromes:
+	How do I test if something is the product of two 3-digit numbers?
+	Largest possible factor of X is <= sqrt(X)
+	starting from sqrt(X), test sequentially smaller numbers A to see if they factor x.
+	X/a = b + r
+	if r is 0 and a and b are both 3-digit, we win
+	
+	if a gets smaller than 3 digit or b gets larger than 3 digit, quit and go to the next X
+	
+Generating palindromes:
+	six digits:  generate 3-digit numbers, reverse, multiply by 1000, concatenate.
+	since we're looking to generate the largest, start with 997  (makes 997799) and count down by 1
+	
+	if short num w is 997
+	long num is 
+	short/100 (ones)
+	+ (short%100) (tens)
+	+ (short%10) * 100 (hundreds)
