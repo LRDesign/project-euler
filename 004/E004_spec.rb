@@ -1,4 +1,5 @@
-require 'E004'
+require File.dirname(__FILE__) + "/../spec/spec_helper.rb"
+require File.dirname(__FILE__) + "/E004"
 
 describe 'E004' do
   before :each do
