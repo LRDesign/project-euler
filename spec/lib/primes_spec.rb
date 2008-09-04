@@ -21,7 +21,7 @@ describe "primes module" do
     
     it "should generate small arrays with max member size" do
       arr = @pt.primes_array(:limit => 20)
-      arr.should == [ 2, 3, 5, 7, 11, 13, 17, 19]
+      arr.should == [ 2, 3, 5, 7, 11, 13, 17, 19 ]
     end
   end
   
