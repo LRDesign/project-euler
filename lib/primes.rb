@@ -35,10 +35,14 @@ module Primes
   end
   
   # a hash of the prime factors of n, with the number of occurrences of each
-  def prime_factors_hash(n)
-    var = n
-    h = Hash.new
-    
+  def prime_factors_hash(n, h = Hash.new)
+    foo = first_prime_factor(n)
+    h[foo[:factor]] = h[foo[:factor]] ? 1 : h[foo[:factor]]
+    if (foo[:dividend] == 1)
+      h
+    else
+      prime_factors_hash(foo[:dividend],h)
+    end
   end
   
   # finds the lowest prime factor of n and returns that factor
