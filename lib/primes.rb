@@ -9,7 +9,12 @@ module Primes
     options[:count]=100 unless options[:count] or options[:limit]
     primes = initialize_array(options)
     val = 5
+    @foo = 0
     while within_limit(val, primes, options)
+      if primes.size != @foo && primes.size % 100 == 0         
+        puts primes.size 
+        @foo = primes.size
+      end
       primes << val unless primes.any? { |pp| val % pp == 0 }
       val += 2
     end
