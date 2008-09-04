@@ -13,10 +13,15 @@ describe "primes module" do
   end
   
   describe "primes_array" do
-    it "should generate small arrays" do      
+    it "should generate small arrays with max count" do      
       arr = @pt.primes_array(:count => 5)
       arr.should have(5).members       
       arr.should == [ 2, 3, 5, 7, 11]  
+    end
+    
+    it "should generate small arrays with max member size" do
+      arr = @pt.primes_array(:limit => 20)
+      arr.should == [ 2, 3, 5, 7, 11, 13, 17, 19]
     end
   end
   
