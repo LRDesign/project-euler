@@ -76,63 +76,6 @@ describe "primes module" do
     
     it "should be inclusive if limit is a prime" do
       @pt.primes_array_sieved(:limit => 5).should == [2, 3, 5]
-    end    
-  end
-  
-  describe "sieve" do
-    it "should do a plain sieve for no supplied primes and no offset" do
-      arr = Array.new(10,true)
-      @pt.sieve(arr,[],0).should == [2, 3, 5, 7]
-    end
-    
-    it "should succeed for an offset when supplied with lower primes" do
-      pending
-      arr = Array.new(10,true)
-      @pt.sieve(arr,[2, 3, 5, 7],10).should == [2, 3, 5, 7, 11, 13, 17, 19]    
-    end
-  end
-  
-  describe "sieve_existing" do
-    it "should mark multples of the array values fals" do
-      arr = Array.new(16, true)
-      @pt.sieve_existing(arr,[2, 3, 5],0).should == [ 
-        true, # 0 
-        true, # 1 
-        true, # 2 
-        true, # 3 
-        true, # 4 
-        true, # 5 
-        true, # 6  - ignores evens
-        true, # 7 
-        true, # 8 
-        false, # 9          
-        true, # 10 - ignores evens
-        true, # 11
-        true, # 12 - ignores evens
-        true, # 13
-        true, # 14
-        false] # 15
-    end
-    
-    it "should mark multples of the array values false with an offset" do
-      arr = Array.new(16, true)
-      @pt.sieve_existing(arr,[2, 3, 5], 10).should == [ 
-        true, # 10 
-        true, # 11 
-        true, # 12 
-        true, # 13 
-        true, # 14 
-        false, # 15 
-        true, # 16
-        true, # 17 
-        true, # 18  - ignores evens 
-        true, # 19          
-        true, # 20 
-        false, # 21
-        true, # 22 
-        true, # 23
-        true, # 24 - ignores evens
-        false] # 25
     end
     
   end
