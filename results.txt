@@ -10,3 +10,4 @@ E009 solution: 31875000 computed in: 2.341701 sec
 E010 solution: 142913828922 computed in: 78.169809 sec
 E011 solution: 70600674 computed in: 0.074778 sec
 E012 solution: 76576500 computed in: 500.293498 sec
+E013 solution: 5537376230 computed in: 0.000664 sec
