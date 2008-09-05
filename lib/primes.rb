@@ -1,6 +1,6 @@
 # tools for generating and interacting with primes
 module Primes
-  ARRAY_DEFAULT_LIMIT = 100
+  ARRAY_DEFAULT_LIMIT = 10000
     
   # implements the sieve of Erastosthenes and returns the resulting primes
   # in an array.   This version doesn't bother sieving or checking the even
