@@ -1,0 +1,37 @@
+even triangle numbers:
+
+T(2) = 1 + 2 = 3
+T(4) = 1 + 2 + 3 + 4 = 10
+T(6) = 1 + 2 + 3 + 4 + 5 + 6 = 21
+T(n) = ((n+1)*n)/2
+
+odds:
+
+T(3) = 1 + 2 + 3 = 6
+T(5) = 1 + 2 + 3 + 4 + 5 = 15
+
+okay, triangle number n is given by
+T(n) = (n+1)*n / 2 
+
+6 has 2 prime factors: 2 and 3, making 4 divisors
+
+28 has 3 prime factors: 2, 2, and 3, making 6 divisors
+
+24 has 4 prime factors: 2^3, 3, making 8 divisors
+1, 2, 3, 4, 6, 8, 12, 24
+
+48 has 5 prime factors: 2^4, 3 , making 10 divisors
+1, 2, 3, 4, 6, 8, 12, 16, 24, 48
+
+72 has 5 prime factors: 2^3, 3^2
+1 2 4 8  3 6 12 24  9 18 36 72, making 12 divisors  
+
+damn, not so simple
+
+From OEIS A000005:
+If the canonical factorization of n into prime powers is 
+Product p^e(p) then d(n) = Product (e(p) + 1).
+
+okay, that's it
+compute prime factorization
+compute the product of all the counts of the primes, each plus 1
