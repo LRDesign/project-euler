@@ -1,38 +1,12 @@
 # tools for generating and interacting with primes
 module Primes
   ARRAY_DEFAULT_LIMIT = 100
-  
-  # generates an array containing all primes below options[:limit]
-  # or the first options[:count] primes 
-  def primes_array(options = {})
-    # default limit of 100 primes
-    options[:count]=100 unless options[:count] or options[:limit]
-    primes = initialize_array(options)
-    val = 5
-    @foo = 0
-    while within_limit(val, primes, options)
-      # if primes.size != @foo && primes.size % 100 == 0         
-      #   puts primes.size 
-      #   @foo = primes.size
-      # end
-      primes << val unless primes.any? { |pp| val % pp == 0 }
-      val += 2
-    end
-    primes
-  end
-
-  def initialize_array(options = {})
-    primes = [ 2 ]
-    unless (options[:count] and options[:count] < 2) or (options[:limit] and options[:limit] < 3)
-      primes << 3 
-    end
-  end
-  
+    
   # implements the sieve of Erastosthenes and returns the resulting primes
   # in an array.   This version doesn't bother sieving or checking the even
   # numbers > 2
-  def primes_array_sieved(options = {})
-    limit = options[:limit]
+  def primes_array(options = {})
+    limit = options[:limit] || ARRAY_DEFAULT_LIMIT
     field = Array.new(limit+1, true)
     # sieve the number field
     3.step(field.size / 2, 2) do |k|

@@ -4,6 +4,6 @@ class E007 < EulerSolution
   include Primes
   
   def answer
-    primes_array(:count => 10001).last    
+    primes_array(:limit => 120000)[10000]    
   end
 end  

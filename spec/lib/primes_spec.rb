@@ -5,15 +5,10 @@ describe "primes module" do
   before(:each) do
     @pt = PrimeClass.new
   end  
-  
-  describe "initialize_array" do
-    it "should initialize to [ 2, 3 ] if no options provided" do
-      @pt.initialize_array.should == [ 2, 3 ]
-    end
-  end
-  
+    
   describe "primes_array" do
     it "should generate small arrays with max count" do      
+      pending  "count is not implemented yet"
       arr = @pt.primes_array(:count => 5)
       arr.should have(5).members       
       arr.should == [ 2, 3, 5, 7, 11]  
@@ -26,8 +21,8 @@ describe "primes module" do
   end
   
   describe "default_array" do
-    it "should contain the first 100 primes" do
-      @pt.first_primes.should have(100).members
+    it "should contain the primes up to 100" do
+      @pt.first_primes.last.should == 97
     end    
   end
   
@@ -67,17 +62,5 @@ describe "primes module" do
     it "should contain all prime factors of 42" do
       @pt.prime_factors(42).should == [ 2, 3, 7 ]
     end    
-  end
-  
-  describe "primes_array_sieved" do
-    it "should produce the same results as the existng primes_array method" do
-      @pt.primes_array_sieved(:limit => 20).should == @pt.primes_array(:limit => 20)
-    end
-    
-    it "should be inclusive if limit is a prime" do
-      @pt.primes_array_sieved(:limit => 5).should == [2, 3, 5]
-    end
-    
-  end
-  
+  end  
 end
