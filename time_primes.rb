@@ -3,6 +3,7 @@ $: << File.join(File.expand_path(File.dirname(__FILE__), "lib"))
 
 require 'tools'
 require 'primes'
+require 'yaml'
 include Tools
 include Primes
 
@@ -22,7 +23,18 @@ LIMIT = 1000
 #   end
 # end
 
-(arr, dur) = elapse { @p.primes_array(:limit => LIMIT) }
+FOO = 76576500
+
+(hash, dur) = elapse { @p.prime_factors_hash(FOO, Hash.new) }
 puts "Old method did it in #{dur} sec"
-(arr2, dur) = elapse { @p.primes_array_sieved(:limit => LIMIT) }
+(hash2, dur) = elapse { @p.factorize(FOO) }
 puts "New method did it in #{dur} sec"
+
+if (hash == hash2)
+  puts "hashes were equal"
+else
+  puts "hashes were not equal"
+end
+
+#puts hash.to_yaml
+puts hash2.to_yaml

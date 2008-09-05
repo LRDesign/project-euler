@@ -8,7 +8,7 @@ class E005 < EulerSolution
     arr = primes_array(:limit => limit)
     factor_count = Hash.new
     (2..limit).each do |n|
-       h = prime_factors_hash(n)
+       h = factor(n)
        h.each do | factor, mult |
          factor_count[factor] ||= 0
          factor_count[factor] = [factor_count[factor], mult].max

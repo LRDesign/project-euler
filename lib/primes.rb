@@ -32,20 +32,29 @@ module Primes
   def first_primes
     @first_primes = primes_array(:count => ARRAY_DEFAULT_LIMIT)
   end
-  
-  # a hash of the prime factors of n, with the number of occurrences of each
-  def prime_factors_hash(n, h = Hash.new)
-    foo = first_prime_factor(n)
-    h[foo[:factor]] = h[foo[:factor]].nil? ? 1 : h[foo[:factor]] + 1
-    if (foo[:dividend] == 1)
-      h
-    else
-      prime_factors_hash(foo[:dividend],h)
+    
+  def factor(n)
+    number = n
+    primes = primes_array
+    pn = 0
+    h = Hash.new
+    until number == 1
+      if (number % primes[pn]).zero?
+        number /= primes[pn]
+        if h[primes[pn]]
+          h[primes[pn]] += 1
+        else
+          h[primes[pn]] = 1
+        end
+      else
+        pn += 1
+      end
     end
+    h
   end
   
   def prime_factors(n)
-    flatten_mult_hash(prime_factors_hash(n)).sort
+    flatten_mult_hash(factor(n)).sort
   end
   
   def flatten_mult_hash(h)

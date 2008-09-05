@@ -8,7 +8,24 @@ class E012 < EulerSolution
   end
   
   def sigma_0(n)
-    prime_factors_hash(n).values.inject(1) { |prod, n| prod * (n + 1) }
+    factor(n).values.inject(1) { |prod, n| prod * (n + 1) }
+  end
+  
+  def count_factors(n)
+    number = n
+    primes = primes_array
+    pn = 0
+    count = 1
+    until number == 1 or (primes[pn] * primes[pn]) > n
+      current = 1
+      while (number % primes[pn]).zero?
+        number /= primes[pn]
+        current += 1
+      end
+      count *= current
+      pn += 1
+    end
+    count
   end
   
   def answer 
@@ -16,7 +33,7 @@ class E012 < EulerSolution
     max_divisors = 1
     begin
       n += 1
-      div = sigma_0(triangle(n))
+      div = count_factors(triangle(n))
       if div > max_divisors
         max_divisors = div 
         puts "N #{n}: #{div}"       
