@@ -21,7 +21,7 @@ class E011 < EulerSolution
   20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
   01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48"
 
-  DIRECTIONS = [ [0,1,2,3], [0,20,40,60], [0, 21, 42, 63] ]
+  DIRS = [ [0,1,2,3], [0,20,40,60], [0, 21, 42, 63], [0, 19, 38, 57]]
   
   # multiplies a row, column, or diagonal.  multiplies a 0 for
   # anything out of bounds
@@ -29,11 +29,20 @@ class E011 < EulerSolution
     vector.inject(1) {|prod, n| (index+n < arr.size) ? prod * arr[index+n] : 0 }
   end
 
+  def max_at_index(arr, index) 
+    [ (index % 20 <= 16) ? product(DIRS[0], arr, index) : 0, # horiz
+      (index / 20 <= 16) ? product(DIRS[1], arr, index) : 0, # vert 
+      ((index % 20 <= 16) and (index / 20 <= 16)) ? product(DIRS[2], arr, index) : 0, # diag SE      
+      ((index % 20 >= 3) and (index / 20 <= 16)) ? product(DIRS[3], arr, index) : 0, # diag SW      
+      ].max
+  end
+
   def grid_array
     @arr ||= STRING.split.collect { |s| s.to_i }
   end
   
   def answer
-    1
+    foo = (1..grid_array.size).collect { |i| max_at_index(grid_array, i) }
+    foo.max
   end
 end
