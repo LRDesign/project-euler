@@ -1,15 +1,1 @@
-E001 solution: 233168 computed in: 0.00635 sec
-E002 solution: 4613732 computed in: 0.000146 sec
-E003 solution: 6857 computed in: 3.777903 sec
-E004 solution: 906609 computed in: 0.014642 sec
-E005 solution: 232792560 computed in: 0.747762 sec
-E006 solution: 25164150 computed in: 0.00114 sec
-E007 solution: 104743 computed in: 0.715944 sec
-E008 solution: 40824 computed in: 0.043084 sec
-E009 solution: 31875000 computed in: 2.341701 sec
-E010 solution: 142913828922 computed in: 78.169809 sec
-E011 solution: 70600674 computed in: 0.074778 sec
-E012 solution: 76576500 computed in: 500.293498 sec
-E013 solution: 5537376230 computed in: 0.000664 sec
-E014 solution: 837799 computed in: 255.003464 secE016 solution: 1366 computed in: 0.004583 sec
-E020 solution: 648 computed in: 0.00489 sec
+E025 solution: 4782 computed in: 0.183275 sec
