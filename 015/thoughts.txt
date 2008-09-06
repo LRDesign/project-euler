@@ -1,0 +1,9 @@
+The routes to any point in the square can be found by seeing it as a rotated slice out of pascal's triangle:
+
+3x3 square:
+01 01 01 01
+01 02 03 04
+01 03 06 10
+01 04 10 20
+
+if the upper left corner is row 0, then the bottom right corner is a single term (the biggest term) out of row 2n for an nxn square.
