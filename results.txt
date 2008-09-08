@@ -16,3 +16,4 @@ E016 solution: 1366 computed in: 0.004583 sec
 E020 solution: 648 computed in: 0.00489 sec
 E025 solution: 4782 computed in: 0.176275 sec
 E015 solution: 137846528820 computed in: 0.008449 sec
+E017 solution: 21124 computed in: 0.15993 sec
