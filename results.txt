@@ -19,3 +19,4 @@ E015 solution: 137846528820 computed in: 0.008449 sec
 E017 solution: 21124 computed in: 0.15993 sec
 E018 solution: 1074 computed in: 0.003719 sec
 E067 solution: 7273 computed in: 0.159239 sec
+E019 solution: 171 computed in: 0.321976 sec
